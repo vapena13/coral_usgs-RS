@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# Metashape
+*.files/
+*.psx~
+*.psz
+
+# Outputs pesados
+outputs/dem/*.tif
+*.obj
+*.ply
+*.las
+*.laz
+outputs/orthomosaic
+# Sistema
+.DS_Store
+Thumbs.db
