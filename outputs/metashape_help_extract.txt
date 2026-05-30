@@ -1,0 +1,212 @@
+Chapter 7. Automation
+Using chunks
+When working with typical data sets, automation of general processing workflow allows to perform 
+routine operations efficiently. Metashape allows to assign several processing steps to be run one by one 
+without user intervention thanks to Batch Processing feature. Manual user intervention can be 
+minimized even further due to 'multiple chunk project' concept, each chunk to include one typical data 
+set. For a project with several chunks of the same nature, common operations available in Batch 
+Processing dialog are applied to each selected chunk individually, thus allowing to set several data sets 
+for automatic processing following predefined workflow pattern.
+In addition, multiple chunk project could be useful when it turns out to be hard or even impossible to 
+generate a 3D model of the whole scene in one go. This could happen, for instance, if the total amount 
+of photographs is too large to be processed at a time. To overcome this difficulty Metashape offers a 
+possibility to split the set of photos into several separate chunks within the same project. Alignment of 
+photos, building dense point cloud, building mesh, and forming texture atlas operations can be 
+performed for each chunk separately and then resulting 3D models can be combined together.
+Working with chunks is not more difficult than using Metashape following the general workflow. In 
+fact, in Metashape always exists at least one active chunk and all the 3D model processing workflow 
+operations are applied to this chunk.
+To work with several chunks you need to know how to create chunks and how to combine resulting 3D 
+models from separate chunks into one model.
+Creating a chunk
+To create new chunk click on the  Add Chunk toolbar button on the Workspace pane or select Add 
+Chunk command from the Workspace context menu (available by right-clicking on the root element on 
+the Workspace pane).
+After the chunk is created you may load photos in it, align them, generate dense point cloud, generate 
+mesh surface model, build texture atlas, export the models at any stage and so on. The models in the 
+chunks are not linked with each other.
+The list of all the chunks created in the current project is displayed in the Workspace pane along with 
+flags reflecting their status.
+The following flags can appear next to the chunk name: 
+R (Referenced)
+Indicates that 3D model in the chunk was referenced. Also will appear when two or more chunks 
+are aligned with each other. See information on how to reference the model in Setting coordinate 
+system.
+S (Scaled)
+Indicates that 3D model in the chunk was scaled based on scale bars information only, with no 
+reference coordinates data being present. See information on scale bar placement in Optimization
+section. 
+Page 1 of 7Chapter 7. Automation
+29/05/2026mk:@MSITStore:C:\Program%20Files\Agisoft\Metashape%20Pro\help\metashape.chm::...
+T (Transformed)
+Indicates that 3D model has been modified manually with at least one of the following 
+instruments:  Rotate object,  Move object or  Scale object. 
+To move photos from one chunk to another simply select them in the list of photos on the Workspace
+pane, and then drag and drop to the target chunk.
+Working with chunks
+All operations within the chunk are carried out following the common workflow: loading photographs, 
+aligning them, generating dense point cloud, building mesh, building texture atlas, exporting 3D model 
+and so on.
+Note that all these operations are applied to the active chunk. When a new chunk is created it is activated 
+automatically. Save project operation saves the content of all chunks. To save selected chunks as a 
+separate project use Save Chunks command from the chunk context menu.
+To set another chunk as active
+1. Right-click on the chunk title on the Workspace pane. 
+2. Select Set Active command from the context menu.
+To remove chunk
+1. Right-click on the chunk title on the Workspace pane. 
+2. Select Remove Chunks command from the context menu.
+To rearrange the order of chunks in the Workspace pane simply drag and drop the chunks in the pane.
+Aligning chunks
+After the "partial" 3D models are built in several chunks they can be merged together. Before merging 
+chunks they need to be aligned.
+To align separate chunks
+1. Select Align Chunks command from the Workflow menu. 
+2. In the Align Chunks dialog box select chunks to be aligned, indicate reference chunk with a 
+double-click. Set desired alignment options. Click OK button when done. 
+3. The progress dialog box will appear displaying the current processing status. To cancel processing 
+click the Cancel button.
+Aligning chunks parameters
+Note
+l Chunk can contain several instances of the same object (point clouds, 3D 
+model, etc).
+Page 2 of 7Chapter 7. Automation
+29/05/2026mk:@MSITStore:C:\Program%20Files\Agisoft\Metashape%20Pro\help\metashape.chm::...
+"Align Chunks" dialog
+The following parameters control the chunks alignment procedure and can be modified in the Align 
+Chunks dialog box:
+Method
+Defines the chunks alignment method. Point based method aligns chunks by matching photos 
+across all the chunks. Marker based method uses markers as common points for different chunks. 
+The details on using markers are available in the Setting coordinate system section. Camera 
+based method is used to align chunks based on estimated camera locations. Corresponding 
+cameras should have the same label. 
+Accuracy (Point based alignment only)
+Higher accuracy setting helps to obtain more accurate chunk alignment results. Lower accuracy 
+setting can be used to get the rough chunk alignment in the shorter time. 
+Point limit (Point based alignment only)
+The number indicates upper limit of feature points on every image to be taken into account during 
+Point based chunks alignment. 
+Fix scale
+Option is to be enabled in case the scales of the models in different chunks were set precisely and 
+should be left unchanged during chunks alignment process. 
+Preselect image pairs (Point based alignment only)
+The alignment process of many chunks may take a long time. A significant portion of this time is 
+spent for matching of detected features across the photos. Image pair preselection option can 
+speed up this process by selection of a subset of image pairs to be matched. 
+Apply mask to (Point based alignment only)
+If apply mask to key points option is selected, areas previously masked on the photos are 
+excluded from feature detection procedure. Apply mask to tie points option means that 
+certain tie points are excluded from alignment procedure. Effectively this implies that if some area 
+Page 3 of 7Chapter 7. Automation
+29/05/2026mk:@MSITStore:C:\Program%20Files\Agisoft\Metashape%20Pro\help\metashape.chm::...
+is masked at least on a single photo, relevant key points on the rest of the photos picturing the 
+same area will be also ignored during alignment procedure (a tie point is a set of key points which 
+have been matched as projections of the same 3D point on different images). This can be useful to 
+be able to suppress background in turntable shooting scenario with only one mask. For additional 
+information on the usage of masks please refer to the Using masks section.
+Merging chunks
+After alignment is complete the separate chunks can be merged into a single chunk.
+To merge chunks
+1. Select Merge Chunks command from the Workflow menu. 
+2. In the Merge Chunks dialog box select chunks to be merged and the desired merging options. 
+Click OK button when done. 
+3. Metashape will merge the separate chunks into one. The merged chunk will be displayed in the 
+project content list on Workspace pane.
+Merge chunks parameters
+"Merge Chunks" dialog
+The following parameters control the chunks merging procedure and can be modified in the Merge 
+Note
+l Chunk alignment can be performed only for chunks containing aligned photos. 
+l There is no need to perform chunk alignment for georeferenced chunks, as they 
+are already in the same coordinate frame.
+Note
+l We recommend processing all the images in a single chunk to provide better 
+accuracy and quality of the final results than the chunking method (separate 
+processing of the sub-sets of the complete photos set and merging them). 
+Page 4 of 7Chapter 7. Automation
+29/05/2026mk:@MSITStore:C:\Program%20Files\Agisoft\Metashape%20Pro\help\metashape.chm::...
+Chunks dialog box:
+Merge dense clouds
+Defines if dense clouds from the selected chunks are combined. 
+Merge models
+Defines if models from the selected chunks are combined. 
+Merge DEMs
+Defines if DEMs from the selected chunks are combined. 
+Merge depth maps
+Defines if depth maps from the selected chunks are combined. 
+Merge tie points
+Defines if the projections of the tie points for corresponding features should be merged. Since tie 
+points merging operation assumes re-matching of the features from different chunks, the operation 
+may be time consuming. Thus it is recommended to disable tie points merging, unless it is 
+required by the task specifics. 
+Merge markers
+Defines if markers from the selected chunks are merged (only markers with the same labels would 
+be merged). 
+Merge orthomosaics
+Defines if orthomosaics from the selected chunks are combined.
+Chunks merging result (i.e. photos, point clouds and geometry) will be stored in the new chunk and it 
+may be treated as an ordinary chunk (e.g. the model can be textured and/or exported).
+Batch processing
+Metashape allows to perform general workflow operations with multiple chunks automatically. It is 
+useful when dealing with a large number of chunks to be processed.
+Batch processing can be applied to all chunks in the Workspace, to unprocessed chunks only, or to the 
+chunks selected by the user. Each operation chosen in the Batch processing dialog will be applied to 
+every selected chunk before processing will move on to the next step. 
+Note
+l Dense cloud and model merging operations will be applied only to the active 
+items. Disabled (inactive) items will not be transferred to the merged chunk.
+General Workflow Import/Export Miscellaneous
+Align Photos Import Masks Align Chunks
+Build DEM Import Shapes Calibrate Colors
+Build Dense Cloud Export Cameras Classify Ground Points
+Build Mesh Export DEM Classify Points
+Build Orthomosaic Export Orthomosaic Close Holes
+Build Panorama Export Points Colorize Dense Cloud
+Build Texture Export Texture Colorize Model
+Build Tiled Model Export Tiled Model Convert Images
+Generate Report Decimate Mesh
+Page 5 of 7Chapter 7. Automation
+29/05/2026mk:@MSITStore:C:\Program%20Files\Agisoft\Metashape%20Pro\help\metashape.chm::...
+To start batch processing
+1. Select Batch Process... command from the Workflow menu. 
+2. Click Add to add the desired processing stages. 
+3. In the Add Job dialog select the kind of operation to be performed, the list of chunks it should be 
+applied to, and desired processing parameters. Click OK button when done. 
+4. Repeat the previous steps to add other processing steps as required. 
+5. Arrange jobs by clicking Up and Down arrows at the right of the Batch Process... dialog box. 
+6. Click OK button to start processing. 
+7. The progress dialog box will appear displaying the list and status of batch jobs and current 
+operation progress. To cancel processing click the Cancel button.
+"Batch Process" dialog
+Detect Fiducials
+Detect Markers
+Generate Masks
+Generate Prescription Map
+Load Project
+Merge Chunks
+Optimize Alignment
+Refine Mesh
+Remove Lighting
+Reset Region
+Run Script
+Sample Points
+Save Project
+Smooth Model
+Page 6 of 7Chapter 7. Automation
+29/05/2026mk:@MSITStore:C:\Program%20Files\Agisoft\Metashape%20Pro\help\metashape.chm::...
+When the batch process includes import/export features that are applied to multiple chunks it is 
+reasonable to use the following templates in the Path field of the import/export jobs: 
+l {filename}- filename (without extension), 
+l {fileext}- file extension, 
+l {camera}- camera label, 
+l {frame}- frame index, 
+l {chunklabel}- chunk label, 
+l {imagefolder}- folder containing images of an active chunk, 
+l {projectfolder}- path to the folder containing current project, 
+l {projectname}- current project filename, 
+l {projectpath}- absolute path to the current project.
+The list of tasks for batch processing can be exported to XML structured file using  Save button in the 
+Batch processing dialog and imported in a different project using  Open button.
+Page 7 of 7Chapter 7. Automation
+29/05/2026mk:@MSITStore:C:\Program%20Files\Agisoft\Metashape%20Pro\help\metashape.chm::...

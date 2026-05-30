@@ -1,19 +1,48 @@
 # Python
 __pycache__/
 *.pyc
+.pytest_cache/
 
 # Metashape
 *.files/
 *.psx~
 *.psz
+*.psx
+*.oc3
+*.tmp
 
 # Outputs pesados
+outputs/products/**/*.tif
+outputs/products/**/*.tiff
+outputs/products/**/*.obj
+outputs/products/**/*.ply
+outputs/products/**/*.las
+outputs/products/**/*.laz
+outputs/products/**/*.mtl
+outputs/products/**/*.tfw
+outputs/products/**/*.prj
+outputs/products/**/*_files/
 outputs/dem/*.tif
 *.obj
 *.ply
 *.las
 *.laz
 outputs/orthomosaic
+
+# Datos locales / datasets
+data/
+*.zip
+*.7z
+*.rar
+
+# Documentos temporales
+~$*
+*.tmp
+docs/~$*
+docs/~WRL*.tmp
+docs/.tmp.driveupload/
+
 # Sistema
 .DS_Store
 Thumbs.db
+desktop.ini

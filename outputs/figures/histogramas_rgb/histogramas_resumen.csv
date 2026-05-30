@@ -1,0 +1,10 @@
+item,value
+original_dir,D:\coral_proyecto\SQUID5_EDR_2021_dataset
+corrected_dir,D:\coral_proyecto\SQUID5_EDR_2021_dataset_corregido
+original_images_total,634
+corrected_images_total,634
+average_histogram_sample_size,30
+original_sample_first,D:\coral_proyecto\SQUID5_EDR_2021_dataset\Line_17\CAM13-20210508211557_000-101.tif
+corrected_sample_first,D:\coral_proyecto\SQUID5_EDR_2021_dataset_corregido\Line_17\CAM13-20210508211557_000-101.tif
+representative_original,D:\coral_proyecto\SQUID5_EDR_2021_dataset\Line_17\CAM13-20210508211557_000-101.tif
+representative_corrected,D:\coral_proyecto\SQUID5_EDR_2021_dataset_corregido\Line_17\CAM13-20210508211557_000-101.tif

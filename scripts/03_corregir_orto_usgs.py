@@ -5,7 +5,7 @@ import rasterio
 # =========================
 # CONFIGURACIÓN
 # =========================
-input_tif = Path(r"C:\Users\TUF Dash\Documents\Maestria\PercepcionRemota\informe1_RS\coral-usgs-RS\outputs\orthomosaic\ortho_subbloque_rgb.tif")
+input_tif = Path(r"C:\Users\TUF Dash\Documents\Maestria\PercepcionRemota\informe1_RS\coral-usgs-RS\outputs\products\orthomosaic\ortho_subbloque_rgb.tif")
 output_tif = input_tif.with_name("ortho_subbloque_rgb_corregida.tif")
 
 # igual que el script USGS / Ancuti parcial
